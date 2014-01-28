@@ -1,0 +1,17 @@
+{
+  "name": "kicss",
+  "version": "0.0.1",
+  "authors": [
+    "ViewOne Sp. z o.o. <support@wviewone.pl> (http://viewone.pl/)"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/viewone/kicss",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "js/lib",
+    "test",
+    "tests"
+  ]
+}
