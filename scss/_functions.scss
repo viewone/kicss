@@ -1,0 +1,17 @@
+@function pxtopercent($size){
+    @if $size != 0 {
+        $percent: percentage($size / 16);
+        @return $percent
+    }
+}
+
+@function pxtorem($size, $base: $base-font-size ){
+    @if $size != 0 {
+        $pxsize: $size / $base;
+        @return #{$pxsize}rem 
+    }
+}
+
+@function getHeadingSize($number, $base: $base-header-font-size, $ratio:$base-header-font-ratio ){
+    @return #{pxtorem($base * ($ratio/$number))}
+}
