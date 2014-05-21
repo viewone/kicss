@@ -9,3 +9,43 @@ $base-font-family: Arial, sans-serif;
 $base-font-weight: $regular;
 
 $alter-font-family: Verdana, serif;
+
+// Grid
+$total-columns    : 16;
+$container-width  : 980px;
+$gutter-width     : 0;
+$grid-padding     : 0;
+$column-class     : "span_";
+$push-class       : "push_";
+$pull-class       : "pull_";
+$last-class       : "omega";
+
+// Large Grid
+$ltotal-columns    : 16;
+$lcontainer-width  : 980px;
+$lgutter-width     : 0;
+$lgrid-padding     : 0;
+$lcolumn-class     : "lspan_";
+$lpush-class       : "lpush_";
+$lpull-class       : "lpull_";
+$llast-class       : "lomega";
+
+// Tablet Grid
+$ttotal-columns    : 16;
+$tcontainer-width  : 768px;
+$tgutter-width     : 0;
+$tgrid-padding     : 0;
+$tcolumn-class     : "tspan_";
+$tpush-class       : "tpush_";
+$tpull-class       : "tpull_";
+$tlast-class       : "tomega";
+
+// Smartphone Grid
+$stotal-columns    : 16;
+$scontainer-width  : 320px;
+$sgutter-width     : 0;
+$sgrid-padding     : 0;
+$scolumn-class     : "sspan_";
+$spush-class       : "spush_";
+$spull-class       : "spull_";
+$slast-class       : "somega";
