@@ -11,6 +11,7 @@ $base-font-weight: $regular;
 $alter-font-family: Verdana, serif;
 
 // Grid
+$container-style  : "magic";
 $total-columns    : 16;
 $container-width  : 980px;
 $gutter-width     : 0;
@@ -21,6 +22,7 @@ $pull-class       : "pull_";
 $last-class       : "omega";
 
 // Large Grid
+$lcontainer-style  : "magic";
 $ltotal-columns    : 16;
 $lcontainer-width  : 980px;
 $lgutter-width     : 0;
@@ -31,6 +33,7 @@ $lpull-class       : "lpull_";
 $llast-class       : "lomega";
 
 // Tablet Grid
+$tcontainer-style  : "magic";
 $ttotal-columns    : 16;
 $tcontainer-width  : 768px;
 $tgutter-width     : 0;
@@ -41,6 +44,7 @@ $tpull-class       : "tpull_";
 $tlast-class       : "tomega";
 
 // Smartphone Grid
+$scontainer-style  : "magic";
 $stotal-columns    : 16;
 $scontainer-width  : 320px;
 $sgutter-width     : 0;
