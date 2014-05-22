@@ -1,0 +1,40 @@
+
+
+@mixin breakpoint($breakpoint) {
+  $i: 1;
+  $bpl: length($breakpoints);
+  $bpvalues: map-values($breakpoints);
+
+  @each $breakpoint_key, $breakpoint_value in $breakpoints {
+
+    @if $breakpoint == $breakpoint_key {
+
+
+      @if $i == 1 {
+
+        @media only screen
+        and (min-width: 0)
+        and (max-width : $breakpoint_value + "px") {
+          @content;
+        }
+
+      } @else if $i == $bpl {
+
+        @media only screen
+        and (min-width : $breakpoint_value + "px") {
+          @content;
+        }
+
+      } @else {
+
+        @media only screen
+        and (min-width: "#{nth($bpvalues, $i - 1)}px")
+        and (max-width : $breakpoint_value + "px") {
+          @content;
+        }
+      }
+    }
+
+    $i: $i + 1;
+  }
+}
