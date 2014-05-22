@@ -1,4 +1,51 @@
 
+//*/
+// Generate media query
+//
+// The breakpoint mixin generate media query based on $breakpoint argument
+// wich must be one of the key of global $breakpoints variable.
+//
+// Example:
+// <code>
+// $breakpoints: (smartphone: 480, tablet: 768, large: 1280);
+//
+// body {
+//   background: #eeeeee;
+//
+//   @include breakpoint(smartphone){ background: #cccccc; }
+//   @include breakpoint(tablet){ background: #dddddd; }
+//   @include breakpoint(large){ background: #ffffff; }
+// }
+// </code>
+//
+// will output:
+//
+// <code>
+// body {
+//   background: #dddddd;
+// }
+// @media only screen and (min-width: 0) and (max-width: 480px) {
+//   body {
+//     background: #999999;
+//   }
+// }
+// @media only screen and (min-width: 480px) and (max-width: 768px) {
+//   body {
+//     background: #bbbbbb;
+//   }
+// }
+// @media only screen and (min-width: 1280px) {
+//   body {
+//     background: #ffffff;
+//   }
+// }
+// </code>
+//
+// @uses    global $breakpoints variable to get breakpoints map
+// @param   string $breakpoint One of the key of the breakpoints map
+// @return  string
+//
+//*/
 
 @mixin breakpoint($breakpoint) {
   $i: 1;
