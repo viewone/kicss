@@ -1,0 +1,54 @@
+$susy: $grid;
+
+@mixin grid {
+  //
+  // Class that have common
+  // properties for each column
+  //
+  // %#{map-get($grid, column-class)} {
+  //   @include float-left;
+  //   margin-right: gutter($total-columns);
+  // }
+
+  // //
+  // // Finally generating classes for the grid and
+  // // extending them of the %#{$column-class} class
+  // //
+
+  // @for $i from 1 through $total-columns{
+
+  //   .#{$column-class}#{$i}{
+  //     width: columns($i, $total-columns);
+  //     @extend %#{$column-class};
+  //   }
+  // }
+
+  // .#{$push-class}0 {
+  //   margin-left: 0;
+  // }
+
+  // @for $i from 1 through $total-columns{
+
+  //   .#{$push-class}#{$i}{
+  //     @include pre($i);
+  //   }
+  // }
+
+  // .#{$pull-class}0 {
+  //   margin-right: 0;
+  // }
+
+  // @for $i from 1 through $total-columns{
+
+  //   .#{$pull-class}#{$i}{
+  //     @include post($i);
+  //   }
+  // }
+
+  // //
+  // // Class for the last element
+  // //
+  // .#{$last-class} {
+  //   @include omega;
+  // }
+}

@@ -13,45 +13,29 @@ $alter-font-family: Verdana, serif;
 $breakpoints: (smartphone: 480, tablet: 768, large: 1280);
 
 // Grid
-$container-style  : "magic";
-$total-columns    : 16;
-$container-width  : 980px;
-$gutter-width     : 0;
-$grid-padding     : 0;
-$column-class     : "span_";
-$push-class       : "push_";
-$pull-class       : "pull_";
-$last-class       : "omega";
-
-// Large Grid
-$lcontainer-style  : "magic";
-$ltotal-columns    : 16;
-$lcontainer-width  : 980px;
-$lgutter-width     : 0;
-$lgrid-padding     : 0;
-$lcolumn-class     : "lspan_";
-$lpush-class       : "lpush_";
-$lpull-class       : "lpull_";
-$llast-class       : "lomega";
-
-// Tablet Grid
-$tcontainer-style  : "magic";
-$ttotal-columns    : 16;
-$tcontainer-width  : 768px;
-$tgutter-width     : 0;
-$tgrid-padding     : 0;
-$tcolumn-class     : "tspan_";
-$tpush-class       : "tpush_";
-$tpull-class       : "tpull_";
-$tlast-class       : "tomega";
-
-// Smartphone Grid
-$scontainer-style  : "magic";
-$stotal-columns    : 16;
-$scontainer-width  : 320px;
-$sgutter-width     : 0;
-$sgrid-padding     : 0;
-$scolumn-class     : "sspan_";
-$spush-class       : "spush_";
-$spull-class       : "spull_";
-$slast-class       : "somega";
+$grid: (
+  flow: ltr,
+  math: fluid,
+  output: float,
+  gutter-position: after,
+  container: auto,
+  container-position: center,
+  columns: 4,
+  gutters: .25,
+  column-width: false,
+  global-box-sizing: content-box,
+  last-flow: to,
+  debug: (
+    image: hide,
+    color: rgba(#66f, .25),
+    output: background,
+    toggle: top right,
+  ),
+  use-custom: (
+    background-image: true,
+    background-options: false,
+    box-sizing: true,
+    clearfix: false,
+    rem: true,
+  )
+);
