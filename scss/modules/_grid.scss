@@ -1,0 +1,57 @@
+@mixin grid {
+
+  //
+  // Assing our grid vairable to global susy.
+  $susy: $grid !global;
+
+  //
+  // Class that have common
+  // properties for each column
+  //
+  %#{map-get($grid, column-class)} {
+    @include float-left;
+    margin-right: gutter(map-get($grid, columns));
+  }
+
+  //
+  // Generating classes for the grid and
+  // extending them of the %#{$column-class} class
+  //
+
+  @for $i from 1 through map-get($grid, columns){
+
+    .#{map-get($grid, column-class)}#{$i}{
+      width: span($i of map-get($grid, columns));
+      @extend %#{map-get($grid, column-class)};
+    }
+  }
+
+  .#{map-get($grid, push-class)}0 {
+    margin-left: 0;
+  }
+
+  @for $i from 1 through map-get($grid, columns){
+
+    .#{map-get($grid, push-class)}#{$i}{
+      margin-left: span($i);
+    }
+  }
+
+  .#{map-get($grid, pull-class)}0 {
+    margin-right: 0;
+  }
+
+  @for $i from 1 through map-get($grid, columns){
+
+    .#{map-get($grid, pull-class)}#{$i}{
+      margin-right: span($i);
+    }
+  }
+
+  // //
+  // // Class for the last element
+  // //
+  .#{map-get($grid, last-class)} {
+    @include omega;
+  }
+}
