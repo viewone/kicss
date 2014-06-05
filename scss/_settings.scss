@@ -37,5 +37,9 @@ $grid: (
     box-sizing: true,
     clearfix: false,
     rem: true,
-  )
+  ),
+  column-class: 'span_',
+  push-class: 'push_',
+  pull-class: 'pull_',
+  last-class: 'omega',
 );
