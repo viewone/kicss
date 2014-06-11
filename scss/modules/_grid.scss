@@ -48,9 +48,9 @@
     }
   }
 
-  // //
-  // // Class for the last element
-  // //
+  //
+  // Class for the last element
+  //
   .#{map-get($grid, last-class)} {
     @include omega;
   }
