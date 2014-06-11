@@ -42,4 +42,6 @@ $grid: (
   push-class: 'push_',
   pull-class: 'pull_',
   last-class: 'omega',
+  responsive: true,
+  responsive-breakpoints: $breakpoints,
 );
