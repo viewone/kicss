@@ -3,14 +3,41 @@
   //
   // Assing our grid vairable to global susy.
   $susy: $grid !global;
+  $breakpoints: $breakpoints !global;
+
+  $columns: map-get($susy, columns);
+  $column-class: #{map-get($susy, column-class)};
+  $push-class: #{map-get($susy, push-class)};
+  $pull-class: #{map-get($susy, pull-class)};
+  $last-class: #{map-get($susy, last-class)};
+
+  @include grid-columns($columns, $column-class, $push-class, $pull-class, $last-class);
+
+  @each $breakpoint_key, $breakpoint_value in $breakpoints {
+
+    @include breakpoint($breakpoint_key){
+
+      $breakpoint_char: str-slice($breakpoint_key, 0, 1);
+
+      $bcolumn-class: #{$breakpoint_char + $column-class};
+      $bpush-class: #{$breakpoint_char + $push-class};
+      $bpull-class: #{$breakpoint_char + $pull-class};
+      $blast-class: #{$breakpoint_char + $last-class};
+
+      @include grid-columns($columns, $bcolumn-class, $bpush-class, $bpull-class, $blast-class);
+    }
+  }
+}
+
+@mixin grid-columns($columns, $column-class, $push-class, $pull-class, $last-class){
 
   //
   // Class that have common
   // properties for each column
   //
-  %#{map-get($grid, column-class)} {
+  %#{$column-class} {
     @include float-left;
-    margin-right: gutter(map-get($grid, columns));
+    margin-right: gutter($columns);
   }
 
   //
@@ -18,32 +45,36 @@
   // extending them of the %#{$column-class} class
   //
 
-  @for $i from 1 through map-get($grid, columns){
+  @for $i from 1 through $columns{
 
-    .#{map-get($grid, column-class)}#{$i}{
-      width: span($i of map-get($grid, columns));
-      @extend %#{map-get($grid, column-class)};
+    $column-class-full: #{$column-class}#{$i};
+    $column-width: span($i of $columns);
+
+
+    .#{$column-class-full}{
+      width: $column-width;
+      @extend %#{$column-class};
     }
   }
 
-  .#{map-get($grid, push-class)}0 {
+  .#{map-get($susy, push-class)}0 {
     margin-left: 0;
   }
 
-  @for $i from 1 through map-get($grid, columns){
+  @for $i from 1 through $columns{
 
-    .#{map-get($grid, push-class)}#{$i}{
+    .#{map-get($susy, push-class)}#{$i}{
       margin-left: span($i);
     }
   }
 
-  .#{map-get($grid, pull-class)}0 {
+  .#{map-get($susy, pull-class)}0 {
     margin-right: 0;
   }
 
-  @for $i from 1 through map-get($grid, columns){
+  @for $i from 1 through $columns{
 
-    .#{map-get($grid, pull-class)}#{$i}{
+    .#{map-get($susy, pull-class)}#{$i}{
       margin-right: span($i);
     }
   }
@@ -51,7 +82,7 @@
   //
   // Class for the last element
   //
-  .#{map-get($grid, last-class)} {
+  .#{map-get($susy, last-class)} {
     @include omega;
   }
 }
