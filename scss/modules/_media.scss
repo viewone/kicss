@@ -57,15 +57,15 @@
     @if $breakpoint == $breakpoint_key {
 
 
-      @if $i == 1 {
+      // @if $i == 1 {
 
-        @media only screen
-        and (min-width: 0)
-        and (max-width : $breakpoint_value + "px") {
-          @content;
-        }
+      //   @media only screen
+      //   and (min-width: 0)
+      //   and (max-width : $breakpoint_value + "px") {
+      //     @content;
+      //   }
 
-      } @else if $i == $bpl {
+      @if $i == $bpl {
 
         @media only screen
         and (min-width : $breakpoint_value + "px") {
@@ -75,8 +75,8 @@
       } @else {
 
         @media only screen
-        and (min-width: "#{nth($bpvalues, $i - 1)}px")
-        and (max-width : $breakpoint_value + "px") {
+        and (min-width: $breakpoint_value + "px")
+        and (max-width : "#{nth($bpvalues, $i + 1)}px") {
           @content;
         }
       }
