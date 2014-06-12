@@ -10,7 +10,7 @@ $base-font-weight: $regular;
 
 $alter-font-family: Verdana, serif;
 
-$breakpoints: (smartphone: 480, tablet: 768, large: 1280);
+$breakpoints: (smartphone: 320, tablet: 768, normal: 1024, large: 1280);
 
 // Grid
 $grid: (
@@ -42,4 +42,5 @@ $grid: (
   push-class: 'push_',
   pull-class: 'pull_',
   last-class: 'omega',
+  responsive: true,
 );
