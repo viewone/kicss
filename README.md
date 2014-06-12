@@ -9,9 +9,6 @@ git clone git@github.com:viewone/kicss.git
 cd kicss
 bundle install
 npm install
-```
-
-Then just run `gulp build`
 
 ## License
 
