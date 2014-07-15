@@ -1,0 +1,70 @@
+
+@mixin base-font(
+  $font-size: $base-font-size,
+  $font-family: $base-font-family,
+  $font-weight: $base-font-weight,
+  $font-color: $base-font-color,
+  $line-height: $base-line-height
+){
+
+  @include font(
+    $font-size,
+    $font-family,
+    $font-weight,
+    $font-color,
+    $line-height);
+}
+
+@mixin alter-font(
+  $font-size: $alter-font-size,
+  $font-family: $alter-font-family,
+  $font-weight: $alter-font-weight,
+  $font-color: $alter-font-color,
+  $line-height: $alter-line-height
+){
+
+  @include font(
+    $font-size,
+    $font-family,
+    $font-weight,
+    $font-color,
+    $line-height);
+}
+
+@mixin font(
+  $font-size,
+  $font-family,
+  $font-weight,
+  $font-color,
+  $line-height
+){
+
+  font-size: $font-size;
+  font-family: $font-family;
+  font-weight: $font-weight;
+  color: $font-color;
+  line-height: $line-height;
+}
+
+@mixin font-smoothing {
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @include text-fields {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @include text-fields-placeholder($paceholder-class) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  button {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
