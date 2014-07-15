@@ -57,24 +57,24 @@
     }
   }
 
-  .#{map-get($susy, push-class)}0 {
+  .#{$push-class}0 {
     margin-left: 0;
   }
 
   @for $i from 1 through $columns{
 
-    .#{map-get($susy, push-class)}#{$i}{
+    .#{$push-class}#{$i}{
       margin-left: span($i);
     }
   }
 
-  .#{map-get($susy, pull-class)}0 {
+  .#{$pull-class}0 {
     margin-right: 0;
   }
 
   @for $i from 1 through $columns{
 
-    .#{map-get($susy, pull-class)}#{$i}{
+    .#{$pull-class}#{$i}{
       margin-right: span($i);
     }
   }
@@ -82,7 +82,7 @@
   //
   // Class for the last element
   //
-  .#{map-get($susy, last-class)} {
+  .#{$last-class} {
     @include omega;
   }
 }
