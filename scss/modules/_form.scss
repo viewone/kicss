@@ -26,7 +26,7 @@
   }
 }
 
-@mixin text-fields-placeholder($placeholder-class: false) {
+@mixin text-fields-placeholder($placeholder-class: $placeholder-class) {
 
     @if $placeholder-class {
       .#{$placeholder-class} { @content; }
@@ -36,20 +36,4 @@
     ::-moz-placeholder { @content; }
     :-ms-input-placeholder { @content; }
     ::-webkit-input-placeholder { @content; }
-}
-
-@include text-fields {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-@include text-fields-placeholder {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-button,
-textarea {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
