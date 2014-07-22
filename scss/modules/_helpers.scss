@@ -4,8 +4,6 @@
     @include pie-clearfix;
 }
 
-$helpers: (padding, margin);
-
 @mixin box-model-helper($helper, $sizes, $direction, $class, $horizontal-class, $vertical-class) {
   @each $size_key, $size_value in $sizes {
 
