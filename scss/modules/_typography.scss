@@ -58,7 +58,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  @include text-fields-placeholder($paceholder-class) {
+  @include text-fields-placeholder($placeholder-class) {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
