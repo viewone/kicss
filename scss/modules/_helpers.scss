@@ -3,3 +3,105 @@
 %cf {
     @include pie-clearfix;
 }
+
+@mixin box-model-helper($helper, $sizes, $direction, $class, $horizontal-class, $vertical-class) {
+  @each $size_key, $size_value in $sizes {
+
+    @each $direction_key, $direction_value in $directions {
+
+      .#{$class}#{$direction_key}#{$size_key} {
+        #{$helper}-#{$direction_value}: $base-line-height * $size_value;
+      }
+    }
+
+    .#{$horizontal-class}#{$size_key} {
+      #{$helper}-left: $base-line-height * $size_value;
+      #{$helper}-right: $base-line-height * $size_value;
+    }
+
+    .#{$vertical-class}#{$size_key} {
+      #{$helper}-top: $base-line-height * $size_value;
+      #{$helper}-bottom: $base-line-height * $size_value;
+    }
+  }
+
+  @each $direction_key, $direction_value in $directions {
+    .#{$class}#{$direction_key}0 {
+      #{$helper}-#{$direction_value}: 0;
+    }
+  }
+
+  .#{$horizontal-class}0 {
+    #{$helper}-left: 0;
+    #{$helper}-right: 0;
+  }
+
+  .#{$vertical-class}0 {
+    #{$helper}-top: 0;
+    #{$helper}-bottom: 0;
+  }
+}
+
+@mixin display-helper($helper-show-class: 's', $helper-hide-class: 'h') {
+
+  .#{$helper-show-class}i {
+    display: inline;
+  }
+
+  .#{$helper-show-class}b {
+    display: block;
+  }
+
+  .#{$helper-show-class}ib {
+    display: inline-block;
+  }
+
+  .#{$helper-hide-class} {
+    display: none;
+  }
+}
+
+@mixin helpers($helpers: $helpers) {
+  @each $helper in $helpers {
+
+    @if $helper == 'margin' or $helper == 'padding' {
+
+      $helper-class: str-slice($helper, 0, 1);
+      $helper-horizontal-class: #{$helper-class + str-slice($horizontal-class, 0, 1)};
+      $helper-vertical-class: #{$helper-class+ str-slice($vertical-class, 0, 1)};
+
+      @include box-model-helper($helper, $sizes, $directions, $helper-class, $helper-horizontal-class, $helper-vertical-class);
+
+      @each $breakpoint_key, $breakpoint_value in $breakpoints {
+
+        @include breakpoint($breakpoint_key) {
+
+          $breakpoint-char: str-slice($breakpoint_key, 0, 1);
+          $bhelper-class: #{$breakpoint-char + $helper-class};
+          $bhelper-horizontal-class: #{$breakpoint-char + $helper-horizontal-class};
+          $bhelper-vertical-class: #{$breakpoint-char + $helper-vertical-class};
+
+          @include box-model-helper($helper, $sizes, $directions, $bhelper-class, $bhelper-horizontal-class, $bhelper-vertical-class);
+        }
+      }
+    } @else if $helper == 'display' {
+
+      $helper-show-class: 's';
+      $helper-hide-class: 'h';
+
+      @include display-helper($helper-show-class, $helper-hide-class);
+
+      @each $breakpoint_key, $breakpoint_value in $breakpoints {
+
+        @include breakpoint($breakpoint_key) {
+
+          $breakpoint-char: str-slice($breakpoint_key, 0, 1);
+          $helper-show-class: #{$breakpoint-char + 's'};
+          $helper-hide-class: #{$breakpoint-char + 'h'};
+
+          @include display-helper($helper-show-class, $helper-hide-class);
+        }
+      }
+    }
+  }
+}

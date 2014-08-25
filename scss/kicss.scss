@@ -1,10 +1,11 @@
 @import "compass";
 @import "susy";
 
-@import "_settings";
+@import "settings";
 
 @import "modules/media";
 @import "modules/helpers";
 @import "modules/grid";
 @import "modules/form";
 @import "modules/nav";
+@import "modules/typography";
