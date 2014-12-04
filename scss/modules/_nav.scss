@@ -1,8 +1,9 @@
 
 //Nav
 %nav{
-    @include reset-box-model;
-    @include reset-list-style;
+    margin: 0;
+    padding: 0;
+    list-style: none;
     > li {
         @include inline-block;
         white-space: nowrap;
@@ -16,7 +17,7 @@
 %nav--float {
   @extend %cf;
   > li {
-    @include float-left;
+    float: left;
   }
 }
 
@@ -29,7 +30,7 @@
 }
 
 // Nav Dropdown
-%nav--dropdown{ 
+%nav--dropdown{
     > li {
         position: relative;
         &:hover {
