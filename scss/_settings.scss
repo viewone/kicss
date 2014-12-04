@@ -17,40 +17,29 @@ $alter-font-weight: $regular;
 $alter-line-height: 16px;
 $alter-font-color: #000;
 
+//Breakpoints
 $breakpoints: (smartphone: 0, tablet: 767, normal: 1023, large: 1280);
 
 // Grid
-$grid: (
-  flow: ltr,
-  math: fluid,
-  output: float,
-  gutter-position: after,
-  container: auto,
-  container-position: center,
-  columns: 4,
-  gutters: .25,
-  column-width: false,
-  global-box-sizing: content-box,
-  last-flow: to,
-  debug: (
-    image: hide,
-    color: rgba(#66f, .25),
-    output: background,
-    toggle: top right,
-  ),
-  use-custom: (
-    background-image: true,
-    background-options: false,
-    box-sizing: true,
-    clearfix: false,
-    rem: true,
-  ),
-  column-class: 'span_',
-  push-class: 'push_',
-  pull-class: 'pull_',
-  last-class: 'omega',
-  responsive: true,
-);
+
+$container: 1280px;
+$column: golden-ratio(1em, 3) !default;
+$gutter: golden-ratio(1em, 3) !default;
+$grid-columns: 12 !default;
+$max-width: em(1088) !default;
+$border-box-sizing: true !default;
+$default-feature: min-width !global;
+$default-layout-direction: LTR !default;
+$disable-warnings: false !default;
+$visual-grid: false !default;
+$visual-grid-color: #EEE !default;
+$visual-grid-index: back !default;
+$visual-grid-opacity: 0.4 !default;
+
+$column-class: 'span_';
+$push-class: 'push_';
+$pull-class: 'pull_';
+$last-class: 'omega';
 
 //Form
 $placeholder-class: 'placeholder';

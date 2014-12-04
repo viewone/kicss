@@ -1,7 +1,12 @@
 
 // Clearfix helper class
 %cf {
-    @include pie-clearfix;
+    @include clearfix;
+}
+
+@mixin reset-box-model() {
+    margin: 0;
+    padding: 0;
 }
 
 @mixin box-model-helper($helper, $sizes, $direction, $class, $horizontal-class, $vertical-class) {
