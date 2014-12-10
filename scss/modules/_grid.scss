@@ -45,7 +45,7 @@
   @for $i from 1 through $columns{
 
     $column-class-full: #{$column-class}#{$i};
-    $column-width: flex-grid($i, $columns);
+    $column-width: percentage($i / $columns);
 
 
     .#{$column-class-full}{
@@ -61,7 +61,7 @@
   @for $i from 1 through $columns{
 
     .#{$push-class}#{$i}{
-      margin-left: flex-grid($i, $columns);
+      margin-left: percentage($i / $columns);
     }
   }
 
@@ -72,7 +72,7 @@
   @for $i from 1 through $columns{
 
     .#{$pull-class}#{$i}{
-      margin-right: flex-grid($i, $columns);
+      margin-right: percentage($i / $columns);
     }
   }
 
