@@ -59,15 +59,15 @@
       @if $i == $bpl {
 
         @media only screen
-        and (min-width : $breakpoint_value + "px") {
+        and (min-width : $breakpoint_value + px) {
           @content;
         }
 
       } @else {
 
         @media only screen
-        and (min-width: $breakpoint_value + "px")
-        and (max-width : "#{nth($bpvalues, $i + 1)}px") {
+        and (min-width: $breakpoint_value + px)
+        and (max-width : #{nth($bpvalues, $i + 1)}px) {
           @content;
         }
       }
