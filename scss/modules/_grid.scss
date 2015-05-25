@@ -42,6 +42,12 @@
   // extending them of the %#{$column-class} class
   //
 
+  .#{$column-class}0{
+    width: auto;
+    float: none;
+    margin-right: 0;
+  }
+
   @for $i from 1 through $columns{
 
     $column-class-full: #{$column-class}#{$i};
