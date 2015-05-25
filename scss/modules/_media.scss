@@ -47,32 +47,66 @@
 //
 //*/
 
-@mixin breakpoint($breakpoint) {
-  $i: 1;
-  $bpl: length($breakpoints);
-  $bpvalues: map-values($breakpoints);
+@mixin breakpoint($breakpoint_max, $breakpoint_min: false) {
 
-  @each $breakpoint_key, $breakpoint_value in $breakpoints {
+    $bpl: length($breakpoints);
+    $bpvalues: map-values($breakpoints);
 
-    @if $breakpoint == $breakpoint_key {
+    @if $breakpoint_min {
 
-      @if $i == $bpl {
+        $i: 1;
 
-        @media only screen
-        and (min-width : $breakpoint_value + px) {
-          @content;
+        @each $breakpoint_min_key, $breakpoint_min_value in $breakpoints {
+
+            $j: 1;
+
+            @each $breakpoint_max_key, $breakpoint_max_value in $breakpoints {
+
+                @if $breakpoint_min == $breakpoint_min_key {
+
+                    @if $breakpoint_max == $breakpoint_max_key {
+
+                        @warn("i" + $i);
+                        @warn("j" + $j);
+
+                        @if $j == $bpl {
+
+                            @media only screen
+                            and (min-width: 0)
+                            and (max-width : #{nth($bpvalues, $i)}px) {
+                                @content;
+                            }
+
+                        } @else {
+
+                            @media only screen
+                            and (min-width: #{nth($bpvalues, $j + 1) + 1}px)
+                            and (max-width : #{nth($bpvalues, $i)}px) {
+                                @content;
+                            }
+                        }
+                    }
+                }
+
+                $j: $j + 1;
+            }
+            $i: $i + 1;
         }
 
-      } @else {
+    } @else {
 
-        @media only screen
-        and (min-width: $breakpoint_value + px)
-        and (max-width : #{nth($bpvalues, $i + 1)}px) {
-          @content;
+        @each $breakpoint_key, $breakpoint_value in $breakpoints {
+
+            @if $breakpoint_max == $breakpoint_key {
+
+                @media only screen
+                and (max-width: $breakpoint_value + px) {
+                    @content;
+                }
+            }
         }
-      }
     }
 
-    $i: $i + 1;
-  }
+    $i: 0;
+    $j: 0;
 }
