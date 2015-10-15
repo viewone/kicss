@@ -1,47 +1,87 @@
+@mixin nav() {
 
-//Nav
-%nav{
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    > li {
-        @include inline-block;
-        white-space: nowrap;
-        > a {
-            display: block;
-        }
-    }
-}
+    //Nav
+    %nav, .nav {
 
-//Nav Float
-%nav--float {
-  @extend %cf;
-  > li {
-    float: left;
-  }
-}
+        margin: 0;
+        padding: 0;
+        list-style: none;
 
-
-// Nav List
-%nav--list {
-    > li {
-        display: block;
-    }
-}
-
-// Nav Dropdown
-%nav--dropdown{
-    > li {
-        position: relative;
-        &:hover {
-            > %nav--dropdown--item {
-                left: 0;
+        > li {
+            display: inline-block;
+            > a {
+                display: block;
             }
         }
     }
 }
 
-%nav--dropdown--item {
-    position: absolute;
-    left: -9999px;
+@mixin nav--float() {
+
+    // Nav Float
+    %nav--float, .nav--float {
+
+      @extend %cf;
+
+      > li {
+        float: left;
+      }
+    }
+}
+
+@mixin nav--list() {
+
+    // Nav List
+    %nav--list {
+
+        > li {
+            display: block;
+        }
+    }
+}
+
+@mixin nav--fit() {
+
+    // Nav Fit
+    %nav--fit, .nav--fit {
+
+        display: table;
+        width: 100%;
+
+        > li {
+            display: table-cell;
+
+            > a {
+                display: block;
+            }
+        }
+    }
+}
+
+@mixin nav--dropdown() {
+
+    // Nav Dropdown
+    %nav--dropdown, .nav--dropdown{
+        > li {
+            position: relative;
+            &:hover {
+                > %nav--dropdown--item {
+                    left: 0;
+                }
+            }
+        }
+    }
+
+    %nav--dropdown--item, .nav--dropdown--item {
+        position: absolute;
+        left: -9999px;
+    }
+}
+
+@mixin nav--all() {
+    @include nav;
+    @include nav--float;
+    @include nav--list;
+    @include nav--fit;
+    @include nav--dropdown;
 }
