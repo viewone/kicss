@@ -1,0 +1,36 @@
+@mixin border-helper($color_name, $color_value) {
+
+    %#{$helper-border-class}-base, .#{$helper-border-class}-base {
+        border-color: $color_value;
+    }
+
+    %#{$helper-border-class}-#{$color_name}, .#{$helper-border-class}-#{$color_name} {
+        @extend %#{$helper-border-class}-base;
+        border-width: $helper-border-width;
+        border-style: $helper-border-style;
+    }
+
+    %#{$helper-border-top-class}-#{$color_name}, .#{$helper-border-top-class}-#{$color_name} {
+        @extend %#{$helper-border-class}-base;
+        border-top-width: $helper-border-width;
+        border-top-style: $helper-border-style;
+    }
+
+    %#{$helper-border-right-class}-#{$color_name}, .#{$helper-border-right-class}-#{$color_name} {
+        @extend %#{$helper-border-class}-base;
+        border-right-width: $helper-border-width;
+        border-right-style: $helper-border-style;
+    }
+
+    %#{$helper-border-bottom-class}-#{$color_name}, .#{$helper-border-bottom-class}-#{$color_name} {
+        @extend %#{$helper-border-class}-base;
+        border-bottom-width: $helper-border-width;
+        border-bottom-style: $helper-border-style;
+    }
+
+    %#{$helper-border-left-class}-#{$color_name}, .#{$helper-border-left-class}-#{$color_name} {
+        @extend %#{$helper-border-class}-base;
+        border-left-width: $helper-border-width;
+        border-left-style: $helper-border-style;
+    }
+}

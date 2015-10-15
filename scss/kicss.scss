@@ -1,7 +1,12 @@
 @import "bourbon";
-@import "neat";
 
 @import "settings";
+
+///////////
+// Tools //
+///////////
+
+@import "tools/fonts";
 
 @import "modules/media";
 @import "modules/helpers";
@@ -9,3 +14,10 @@
 @import "modules/form";
 @import "modules/nav";
 @import "modules/typography";
+
+////////////
+// Trumps //
+////////////
+
+@import "trumps/palette";
+@import "trumps/border"

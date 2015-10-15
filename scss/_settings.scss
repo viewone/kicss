@@ -1,54 +1,199 @@
-// Font weights
-$light: 100;
-$regular: 400;
-$bold: 700;
+/***************
+ * Scaffolding *
+ ***************/
+
+$breakpoints: (normal: 1280, tablet: 1023, smartphone: 767);
+
+/************
+ * Typography *
+ ************/
 
 // Base Font
 $base-font-size: 16px;
 $base-font-family: Arial, sans-serif;
-$base-font-weight: $regular;
+$base-font-weight: 400;
 $base-line-height: 24px;
 $base-font-color: #000;
 
 // Alter Font
 $alter-font-size: 10px;
 $alter-font-family: Verdana, serif;
-$alter-font-weight: $regular;
+$alter-font-weight: 400;
 $alter-line-height: 16px;
 $alter-font-color: #000;
 
-//Breakpoints
-$breakpoints: (normal:1280, tablet: 1023, smartphone: 767);
+$font-sizes: ( 8: 8px, 10: 10px, 12: 12px, 14: 14px, 16: 16px, 18: 18px, 20: 20px, 22: 22px, 24: 24px, 26: 26px, 36: 36px, 48: 48px);
 
-// Grid
+$base-helper-fonts : ();
 
-$container: 1280px;
-$column: golden-ratio(1em, 3) !default;
-$gutter: golden-ratio(1em, 3) !default;
-$grid-columns: 12 !default;
-$max-width: em(1088) !default;
-$border-box-sizing: true !default;
-$default-feature: min-width !global;
-$default-layout-direction: LTR !default;
-$disable-warnings: false !default;
-$visual-grid: false !default;
-$visual-grid-color: #EEE !default;
-$visual-grid-index: back !default;
-$visual-grid-opacity: 0.4 !default;
+$helper-font-family-class: 'ff-' !default;
+$helper-font-style-class: 'fs-' !default;
+$helper-font-weight-class: 'fw-' !default;
+$helper-font-size-class: 'fz-' !default;
 
-$column-class: 'span_';
-$push-class: 'push_';
-$pull-class: 'pull_';
-$last-class: 'omega';
+/************
+ * Palettes *
+ ************/
 
-//Form
+/**
+ * Google material palettes used to define the diff between the base color and each color from the palette.
+ *
+ * @Link https://www.google.com/design/spec/style/color.html#color-color-palette
+ *
+ * @type Map
+ */
+
+ $red-palette-material-design: (
+  'base': #f44336,
+  'colors': #ffebee #ffcdd2 #ef9191 #e57373 #ef5350 #f44336 #e53935 #d32f2f #c62828 #b71c1c #ff8a80 #ff5252 #ff1744 #d50000
+) !default;
+
+$purple-palette-material-design: (
+  'base': #9c27b0,
+  'colors': #f3e5f5 #e1bee7 #ce93d8 #ba68c8 #ab47bc #9c27b0 #8324aa #7b1fa2 #6a1b9a #4a148c #ea80fc #e040fb #d500f9 #aa00ff
+) !default;
+
+
+/**
+ * Default palette used to define the diff between the base color and each color from the palette.
+ *
+ * @type Map
+ */
+
+$base-diff-palette: $red-palette-material-design !default;
+
+/**
+ * Base project palettes
+ *
+ * @type Map
+ */
+
+$base-palettes: (
+    "gray": #999999
+) !default;
+
+/**
+ * Helper color class used to generate colors for each color in palette
+ *
+ * @type String
+ */
+
+$helper-color-class: 'cl-' !default;
+
+/**
+ * Helper background color class used to generate backgrounds for each color in palette
+ *
+ * @type String
+ */
+
+$helper-background-class: 'bg-' !default;
+
+/************
+ * Borders *
+ ************/
+
+ /**
+ * Helper border class
+ *
+ * @type String
+ */
+
+ $helper-border-class: 'bd-' !default;
+
+ /**
+ * Helper border top class prefix
+ *
+ * @type String
+ */
+
+ $helper-border-top-class: 'bdt-' !default;
+
+ /**
+ * Helper border right class prefix
+ *
+ * @type String
+ */
+
+ $helper-border-right-class: 'bdr-' !default;
+
+ /**
+ * Helper border bottom class prefix
+ *
+ * @type String
+ */
+
+ $helper-border-bottom-class: 'bdb-' !default;
+
+ /**
+ * Helper border left class prefix
+ *
+ * @type String
+ */
+
+ $helper-border-left-class: 'bdl-' !default;
+
+/**
+ * Helper border default style
+ *
+ * @type String
+ */
+
+$helper-border-style: solid !default;
+
+/**
+ * Helper border default style
+ *
+ * @type Number
+ */
+
+$helper-border-width: 1px !default;
+
+ /**
+ * Helper border colors
+ *
+ * @type Map
+ */
+
+$helper-border-colors: (
+    "gray"
+) !default;
+
+ /**
+ * Helper border colors
+ *
+ * @type String
+ */
+
+ $helper-border-tone: '100' !default;
+
+ /**********
+ * Postion *
+ ***********/
+
+$helper-position-top-class: 't' !default;
+$helper-position-right-class: 'r' !default;
+$helper-position-bottom-class: 'b' !default;
+$helper-position-left-class: 'l' !default;
+$helper-position-static-class: 'pos' !default;
+$helper-position-relative-class: 'por' !default;
+$helper-position-absolute-class: 'poa' !default;
+$helper-position-fixed-class: 'pof' !default;
+
+///////////
+// Forms //
+///////////
+
 $placeholder-class: 'placeholder';
 
-//Helpers
+/////////////
+// Helpers //
+/////////////
+
+$helpers: (padding, margin, display, size, position, align-x, align-y, font-size, font-family, font-weight, line-height , colors, border);
+
 $sizes: (xxs: .25, xs: .5, s: .75, n: 1, m: 1.5, l: 2, xl: 2.5, xxl: 3);
+
 $directions: (t: top, r: right, b: bottom, l: left);
 
-$helpers: (padding, margin, display);
-
-$horizontal-class: h;
-$vertical-class: v;
+$horizontal-class: 'x';
+$vertical-class: 'y';

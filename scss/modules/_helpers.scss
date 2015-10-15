@@ -9,6 +9,76 @@
     padding: 0;
 }
 
+@mixin box-model-padding($size, $direction) {
+
+    @each $size_key, $size_value in $sizes {
+
+        @if $size == $size_key {
+
+            @if $direction == 't' {
+                padding-top: $base-line-height * $size_value;
+            }
+
+            @if $direction == 'r' {
+                padding-right: $base-line-height * $size_value;
+            }
+
+            @if $direction == 'b' {
+                padding-bottom: $base-line-height * $size_value;
+            }
+
+            @if $direction == 'l' {
+                padding-left: $base-line-height * $size_value;
+            }
+
+            @if $direction == 'x' {
+                padding-right: $base-line-height * $size_value;
+                padding-left: $base-line-height * $size_value;
+            }
+
+            @if $direction == 'y' {
+                padding-top: $base-line-height * $size_value;
+                padding-bottom: $base-line-height * $size_value;
+            }
+        }
+    }
+}
+
+@mixin box-model-margin($size, $direction) {
+
+    @each $size_key, $size_value in $sizes {
+
+        @if $size == $size_key {
+
+            @if $direction == 't' {
+                margin-top: $base-line-height * $size_value;
+            }
+
+            @if $direction == 'r' {
+                margin-right: $base-line-height * $size_value;
+            }
+
+            @if $direction == 'b' {
+                margin-bottom: $base-line-height * $size_value;
+            }
+
+            @if $direction == 'l' {
+                margin-left: $base-line-height * $size_value;
+            }
+
+            @if $direction == 'x' {
+                margin-right: $base-line-height * $size_value;
+                margin-left: $base-line-height * $size_value;
+            }
+
+            @if $direction == 'y' {
+                margin-top: $base-line-height * $size_value;
+                margin-bottom: $base-line-height * $size_value;
+            }
+        }
+    }
+}
+
 @mixin box-model-helper($helper, $sizes, $direction, $class, $horizontal-class, $vertical-class) {
   @each $size_key, $size_value in $sizes {
 
@@ -47,7 +117,7 @@
   }
 }
 
-@mixin display-helper($helper-show-class: 's', $helper-hide-class: 'h') {
+@mixin display-helper($helper-show-class: 'd', $helper-hide-class: 'h') {
 
   .#{$helper-show-class}i {
     display: inline;
@@ -61,9 +131,183 @@
     display: inline-block;
   }
 
+  .#{$helper-show-class}t {
+    display: table;
+  }
+
+  .#{$helper-show-class}tr {
+    display: table-row;
+  }
+
+  .#{$helper-show-class}tc {
+    display: table-cell;
+  }
+
   .#{$helper-hide-class} {
     display: none;
   }
+}
+
+@mixin align-x-helper($helper-left-align-class: 'tal', $helper-center-align-class: 'tac', $helper-right-align-class: 'tar', $helper-justify-align-class: 'taj') {
+
+  .#{$helper-left-align-class} {
+    text-align: left;
+  }
+
+  .#{$helper-center-align-class} {
+    text-align: center;
+  }
+
+  .#{$helper-right-align-class} {
+    text-align: right;
+  }
+
+  .#{$helper-justify-align-class} {
+    text-align: justify;
+  }
+}
+
+@mixin align-y-helper($helper-top-align-class: 'vat', $helper-middle-align-class: 'vam', $helper-bottom-align-class: 'vab') {
+
+  .#{$helper-top-align-class} {
+    vertical-align: top;
+  }
+
+  .#{$helper-middle-align-class} {
+    vertical-align: middle;
+  }
+
+  .#{$helper-bottom-align-class} {
+    vertical-align: bottom;
+  }
+}
+
+@mixin font-size-helper($helper-font-size-class: 'fz-') {
+
+    @each $font-size_key, $font-size_value in $font-sizes {
+
+        .#{$helper-font-size-class + $font-size_key} {
+            font-size: $font-size_value;
+        }
+    }
+}
+
+@mixin line-height-helper($helper-line-height-class: 'lh-') {
+
+    @each $line-height_key, $line-height_value in $line-heights {
+
+        .#{$helper-line-height-class + $line-height_key} {
+            line-height: $line-height_value;
+        }
+    }
+}
+
+@mixin font-family-helper($helper-font-family-class: 'ff-') {
+
+    @each $font-family_key, $font-size_value in $base-helper-fonts {
+
+        .#{$helper-font-family-class + $font-family_key} {
+            font-family: #{$font-size_value};
+        }
+    }
+}
+
+@mixin font-weight-helper($helper-font-weight-class: 'fw-') {
+
+    .#{$helper-font-weight-class + '300'} {
+        font-weight: 300;
+    }
+
+    .#{$helper-font-weight-class + '400'} {
+        font-weight: 400;
+    }
+
+    .#{$helper-font-weight-class + '500'} {
+        font-weight: 500;
+    }
+
+    .#{$helper-font-weight-class + '600'} {
+        font-weight: 600;
+    }
+}
+
+@mixin size-helper($helper-size-width-class: 'w', $helper-size-height-class: 'h') {
+
+    .#{$helper-size-width-class}0 {
+        width: 0;
+    }
+
+    .#{$helper-size-width-class}100 {
+        width: 100%;
+    }
+
+    .#{$helper-size-height-class}0 {
+        height: 0;
+    }
+
+    .#{$helper-size-height-class}100 {
+        height: 100%;
+    }
+}
+
+@mixin position-helper(
+    $helper-position-top-class: 't',
+    $helper-position-right-class: 'r',
+    $helper-position-bottom-class: 'b',
+    $helper-position-left-class: 'l',
+    $helper-position-static-class: 'pos',
+    $helper-position-relative-class: 'por',
+    $helper-position-absolute-class: 'poa',
+    $helper-position-fixed-class: 'pof'
+) {
+
+    .#{$helper-position-top-class}0 {
+        top: 0;
+    }
+
+    .#{$helper-position-top-class}100 {
+        top: 100%;
+    }
+
+    .#{$helper-position-right-class}0 {
+        right: 0;
+    }
+
+    .#{$helper-position-right-class}100 {
+        right: 100%;
+    }
+
+    .#{$helper-position-bottom-class}0 {
+        bottom: 0;
+    }
+
+    .#{$helper-position-bottom-class}100 {
+        bottom: 100%;
+    }
+
+    .#{$helper-position-left-class}0 {
+        left: 0;
+    }
+
+    .#{$helper-position-left-class}100 {
+        left: 100%;
+    }
+
+    .#{$helper-position-static-class} {
+        position: static;
+    }
+
+    .#{$helper-position-relative-class} {
+        position: relative;
+    }
+
+    .#{$helper-position-absolute-class} {
+        position: absolute;
+    }
+
+    .#{$helper-position-fixed-class} {
+        position: fixed;
+    }
 }
 
 @mixin helpers($helpers: $helpers) {
@@ -73,7 +317,7 @@
 
       $helper-class: str-slice($helper, 0, 1);
       $helper-horizontal-class: #{$helper-class + str-slice($horizontal-class, 0, 1)};
-      $helper-vertical-class: #{$helper-class+ str-slice($vertical-class, 0, 1)};
+      $helper-vertical-class: #{$helper-class + str-slice($vertical-class, 0, 1)};
 
       @include box-model-helper($helper, $sizes, $directions, $helper-class, $helper-horizontal-class, $helper-vertical-class);
 
@@ -89,9 +333,11 @@
           @include box-model-helper($helper, $sizes, $directions, $bhelper-class, $bhelper-horizontal-class, $bhelper-vertical-class);
         }
       }
-    } @else if $helper == 'display' {
+    }
 
-      $helper-show-class: 's';
+    @if $helper == 'display' {
+
+      $helper-show-class: 'd';
       $helper-hide-class: 'h';
 
       @include display-helper($helper-show-class, $helper-hide-class);
@@ -101,10 +347,176 @@
         @include breakpoint($breakpoint_key) {
 
           $breakpoint-char: str-slice($breakpoint_key, 0, 1);
-          $helper-show-class: #{$breakpoint-char + 's'};
+          $helper-show-class: #{$breakpoint-char + 'd'};
           $helper-hide-class: #{$breakpoint-char + 'h'};
 
           @include display-helper($helper-show-class, $helper-hide-class);
+        }
+      }
+    }
+
+    @if $helper == 'align-x' {
+
+      $helper-left-align-class: 'tal';
+      $helper-center-align-class: 'tac';
+      $helper-right-align-class: 'tar';
+      $helper-justify-align-class: 'taj';
+
+      @include align-x-helper($helper-left-align-class, $helper-center-align-class, $helper-right-align-class, $helper-justify-align-class);
+
+      @each $breakpoint_key, $breakpoint_value in $breakpoints {
+
+        @include breakpoint($breakpoint_key) {
+
+          $breakpoint-char: str-slice($breakpoint_key, 0, 1);
+
+          $breakpoint-helper-left-align-class: #{$breakpoint-char + $helper-left-align-class};
+          $breakpoint-helper-center-align-class: #{$breakpoint-char + $helper-center-align-class};
+          $breakpoint-helper-right-align-class: #{$breakpoint-char + $helper-right-align-class};
+          $breakpoint-helper-justify-align-class: #{$breakpoint-char + $helper-justify-align-class};
+
+          @include align-x-helper($breakpoint-helper-left-align-class, $breakpoint-helper-center-align-class, $breakpoint-helper-right-align-class, $breakpoint-helper-justify-align-class);
+        }
+      }
+    }
+
+    @if $helper == 'align-y' {
+
+      $helper-top-align-class: 'vat';
+      $helper-middle-align-class: 'vam';
+      $helper-bottom-align-class: 'vab';
+
+      @include align-y-helper($helper-top-align-class, $helper-middle-align-class, $helper-bottom-align-class);
+
+      @each $breakpoint_key, $breakpoint_value in $breakpoints {
+
+        @include breakpoint($breakpoint_key) {
+
+          $breakpoint-char: str-slice($breakpoint_key, 0, 1);
+
+          $breakpoint-helper-top-align-class: #{$breakpoint-char + $helper-top-align-class};
+          $breakpoint-helper-middle-align-class: #{$breakpoint-char + $helper-middle-align-class};
+          $breakpoint-helper-bottom-align-class: #{$breakpoint-char + $helper-bottom-align-class};
+
+          @include align-y-helper($breakpoint-helper-top-align-class, $breakpoint-helper-middle-align-class, $breakpoint-helper-bottom-align-class);
+        }
+      }
+    }
+
+    @if $helper == 'font-family' {
+        @include font-family-helper();
+    }
+
+    @if $helper == 'font-size' {
+
+      $helper-font-size-helper: 'fz-';
+
+      @include font-size-helper($helper-font-size-helper);
+
+      @each $breakpoint_key, $breakpoint_value in $breakpoints {
+
+        @include breakpoint($breakpoint_key) {
+
+          $breakpoint-char: str-slice($breakpoint_key, 0, 1);
+
+          $breakpoint-helper-font-size-class: #{$breakpoint-char + $helper-font-size-helper};
+
+          @include font-size-helper($breakpoint-helper-font-size-class);
+        }
+      }
+    }
+
+    @if $helper == 'font-weight' {
+
+        $helper-font-weight-helper: 'fw-';
+
+        @include font-weight-helper($helper-font-weight-helper);
+    }
+
+    @if $helper == 'line-height' {
+
+        $helper-font-size-helper: 'lh-';
+
+        @include line-height-helper($helper-font-size-helper);
+    }
+
+    @if $helper == 'colors' {
+
+      @each $palette_key, $palette_value in $base-palettes {
+
+        @include palette-helper($palette_key, $palette_value);
+      }
+    }
+
+    @if $helper == 'border' {
+
+      @each $border_color_name in $helper-border-colors {
+
+        $color: palette-color($border_color_name, $helper-border-tone);
+
+        @include border-helper($border_color_name, $color);
+      }
+    }
+
+    @if $helper == 'size' {
+
+      $helper-size-width-helper: 'w';
+      $helper-size-height-helper: 'h';
+
+      @include size-helper($helper-size-width-helper, $helper-size-height-helper);
+
+      @each $breakpoint_key, $breakpoint_value in $breakpoints {
+
+        @include breakpoint($breakpoint_key) {
+
+          $breakpoint-char: str-slice($breakpoint_key, 0, 1);
+
+          $breakpoint-helper-size-width-class: #{$breakpoint-char + $helper-size-width-helper};
+          $breakpoint-helper-size-height-class: #{$breakpoint-char + $helper-size-height-helper};
+
+          @include size-helper($breakpoint-helper-size-width-class, $breakpoint-helper-size-height-class);
+        }
+      }
+    }
+
+    @if $helper == 'position' {
+
+      @include position-helper(
+        $helper-position-top-class,
+        $helper-position-right-class,
+        $helper-position-bottom-class,
+        $helper-position-left-class,
+        $helper-position-static-class,
+        $helper-position-relative-class,
+        $helper-position-absolute-class,
+        $helper-position-fixed-class
+      );
+
+      @each $breakpoint_key, $breakpoint_value in $breakpoints {
+
+        @include breakpoint($breakpoint_key) {
+
+          $breakpoint-char: str-slice($breakpoint_key, 0, 1);
+
+          $breakpoint-helper-position-top-class:      #{$breakpoint-char + $helper-position-top-class};
+          $breakpoint-helper-position-right-class:    #{$breakpoint-char + $helper-position-right-class};
+          $breakpoint-helper-position-bottom-class:   #{$breakpoint-char + $helper-position-bottom-class};
+          $breakpoint-helper-position-left-class:     #{$breakpoint-char + $helper-position-left-class};
+          $breakpoint-helper-position-static-class:   #{$breakpoint-char + $helper-position-static-class};
+          $breakpoint-helper-position-relative-class: #{$breakpoint-char + $helper-position-relative-class};
+          $breakpoint-helper-position-absolute-class: #{$breakpoint-char + $helper-position-absolute-class};
+          $breakpoint-helper-position-fixed-class:     #{$breakpoint-char + $helper-position-fixed-class};
+
+          @include position-helper(
+            $breakpoint-helper-position-top-class,
+            $breakpoint-helper-position-right-class,
+            $breakpoint-helper-position-bottom-class,
+            $breakpoint-helper-position-left-class,
+            $breakpoint-helper-position-static-class,
+            $breakpoint-helper-position-relative-class,
+            $breakpoint-helper-position-absolute-class,
+            $breakpoint-helper-position-fixed-class
+          );
         }
       }
     }
